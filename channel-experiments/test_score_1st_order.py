@@ -37,7 +37,6 @@ config      = contents['config']
 
 # Default hyper-parameters for pilot_alpha = 0.6, all SNR points
 if args.train == 'CDL-A':
-    # !!! Not to be confused with 'pilot_alpha' that denotes fraction of pilots
     alpha_step = 3e-11 # 'alpha' in paper Algorithm 1
     beta_noise = 0.01  # 'beta' in paper Algorithm 1
 elif args.train == 'CDL-B':
@@ -56,6 +55,7 @@ elif args.train == 'Mixed':
 # Instantiate model
 diffuser = NCSNv2Deepest(config)
 diffuser = diffuser.cuda()
+
 # Load weights
 diffuser.load_state_dict(contents['model_state']) 
 diffuser.eval()
@@ -71,6 +71,7 @@ snr_range          = np.arange(-10, 32.5, 2.5)
 spacing_range      = np.asarray(args.spacing) # From a pre-defined index
 pilot_alpha_range  = np.asarray(args.pilot_alpha)
 noise_range        = 10 ** (-snr_range / 10.) * config.data.image_size[1]
+
 # Number of validation channels
 num_channels = 100
     
@@ -170,19 +171,7 @@ avg_nmse  = np.mean(nmse_log, axis=-1)
 best_nmse = np.min(avg_nmse, axis=-1)
 
 # Plot results for all alpha values
-plt.rcParams['font.size'] = 14
-plt.figure(figsize=(10, 10))
-for alpha_idx, local_alpha in enumerate(pilot_alpha_range):
-    plt.plot(snr_range, 10*np.log10(best_nmse[0, alpha_idx]),
-             linewidth=4, label='Alpha=%.2f' % local_alpha)
-plt.grid(); plt.legend()
-plt.title('Score-based channel estimation')
-plt.xlabel('SNR [dB]'); plt.ylabel('NMSE [dB]')
-plt.tight_layout()
-plt.savefig(os.path.join(result_dir, 'results.png'), dpi=300, 
-            bbox_inches='tight')
-plt.close() 
-               
+  
 # Save results to file based on noise
 save_dict = {'nmse_log': nmse_log,
              'avg_nmse': avg_nmse,
@@ -192,4 +181,4 @@ save_dict = {'nmse_log': nmse_log,
              'snr_range': snr_range,
              'val_config': val_config,
             }
-torch.save(save_dict, os.path.join(result_dir, 'results.pt'))
+torch.save(save_dict, os.path.join(result_dir, 'results_lang_1storder.pt'))

@@ -9,15 +9,15 @@ The repo contains one folder for each type of experiment.
 
 * channel-experiments
 
-This folder contains all the files and folders to run the channel estimation experiments. One of the results that you will obtain by running this is the following
+This folder contains all the files and folders to run the channel estimation experiments. By running the experiments you will get something like the following
 
-IMAGE
+<img src="https://github.com/nzilberstein/joint-score-based-channel/blob/main/figures/discretization_methods.png" width="500" height="425">
+<img src="https://github.com/nzilberstein/joint-score-based-channel/blob/main/figures/langevin_order_comparison.png" width="500" height="425">
+
 
 * Image experiments
 
-This folder contains all the files and folders to run the image experiments. One of the results that you will obtain by running this is the following
-
-IMAGE
+This folder contains all the files and folders to run the image experiments
 
 ## Clone the repository 
 
