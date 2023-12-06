@@ -54,6 +54,6 @@ This will generate a file placed in results. Then, you can plot using the functi
 
 ## Acknowledgement
 
-Full credits for this repository go to the [MIMO-score-based]: https://github.com/utcsilab/score-based-channels. We only added the cases of higher order Langevin, the other files are based on their repo
+Full credits for this repository go to the [MIMO-score-based]: https://github.com/utcsilab/score-based-channels.
 
 

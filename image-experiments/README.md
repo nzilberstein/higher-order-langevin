@@ -107,7 +107,7 @@ Configuration files are in `configs/`. You don't need to include the prefix `con
 
 ## Acknowledgement
 
-This repo is largely based on the [SNIPS](https://github.com/bahjat-kawar/snips_torch) and [NCSNv2](https://github.com/ermongroup/ncsnv2) repos, and uses modified code from [DDRM](https://github.com/bahjat-kawar/ddrm) for implementing the degradation operations.
+Full credits of this repository go to [SNIPS](https://github.com/bahjat-kawar/snips_torch), and for the score module to [NCSNv2](https://github.com/ermongroup/ncsnv2).
 
 ## References
 
